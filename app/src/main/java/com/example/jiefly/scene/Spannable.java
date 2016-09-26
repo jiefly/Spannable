@@ -100,7 +100,7 @@ public class Spannable extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_7)).setText(spannableString5);
 
         SpannableString spannableString6 = new SpannableString("<ImageSpan实现边框>我在边框里面");
-        spannableString6.setSpan(new ImageSpan(Bitmap.createBitmap(10,10, Bitmap.Config.RGB_565)) {
+        spannableString6.setSpan(new ImageSpan(Bitmap.createBitmap(10, 10, Bitmap.Config.RGB_565)) {
             @Override
             public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
 //                super.draw(canvas, text, start, end, x, top, y, bottom, paint);
@@ -118,7 +118,7 @@ public class Spannable extends AppCompatActivity {
         }, spannableString6.length() - 6, spannableString6.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         ((TextView) findViewById(R.id.tv_8)).setText(spannableString6);
         SpannableString spannableString7 = new SpannableString("<ImageSpan实现边框1> 我在边框里面");
-        spannableString7.setSpan(new ImageSpan(Bitmap.createBitmap(10,10, Bitmap.Config.RGB_565)) {
+        spannableString7.setSpan(new ImageSpan(Bitmap.createBitmap(10, 10, Bitmap.Config.RGB_565)) {
             @Override
             public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
 //                super.draw(canvas, text, start, end, x, top, y, bottom, paint);
@@ -126,26 +126,26 @@ public class Spannable extends AppCompatActivity {
 //                end -> text终止位置
 //                x ->目标substring的起始x坐标
 //                y-> 目标substring的起始y坐标（字体leading的位置）
-                x+=20;
+                x += 20;
                 float strLen = paint.measureText(text, start, end);
                 Paint.FontMetrics fm = paint.getFontMetrics();
                 paint.setColor(Color.RED);
                 float centerY = (fm.ascent + fm.descent) / 2 + y;
                 Path path = new Path();
-                path.moveTo(x - 20,centerY);
-                path.lineTo(x,fm.ascent+y);
-                path.lineTo(x,fm.descent+y);
+                path.moveTo(x - 20, centerY);
+                path.lineTo(x, fm.ascent + y);
+                path.lineTo(x, fm.descent + y);
                 path.close();
-                canvas.drawPath(path,paint);
+                canvas.drawPath(path, paint);
                 canvas.drawRect(x, y + fm.ascent, x + strLen, y + fm.descent, paint);
                 paint.setColor(Color.WHITE);
-                canvas.drawCircle(x-10,centerY,5,paint);
+                canvas.drawCircle(x - 10, centerY, 5, paint);
                 canvas.drawText(text, start, end, x, y, paint);
             }
         }, spannableString7.length() - 7, spannableString7.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         ((TextView) findViewById(R.id.tv_9)).setText(spannableString7);
         SpannableString spannableString8 = new SpannableString("<ImageSpan>蝈蝈发来了一个表情");
-        ImageSpan imageSpan1 = new ImageSpan(getApplicationContext(),R.mipmap.ic_launcher, DynamicDrawableSpan.ALIGN_BOTTOM){
+        ImageSpan imageSpan1 = new ImageSpan(getApplicationContext(), R.mipmap.ic_launcher, DynamicDrawableSpan.ALIGN_BOTTOM) {
             @Override
             public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
                 Drawable b = getDrawable();
